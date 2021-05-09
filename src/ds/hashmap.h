@@ -17,9 +17,9 @@ typedef struct {
 
 hashmap_t* create_hashmap();
 
-int get(hashmap_t*, char[]);
-void put(hashmap_t*, char[], int);
-int size(hashmap_t*);
-void remove(hashmap_t*, char[]);
+int hashmap_get(hashmap_t*, char[]);
+void hashmap_put(hashmap_t*, char[], int);
+int hashmap_size(hashmap_t*);
+void hashmap_remove(hashmap_t*, char[]);
 
 #endif
