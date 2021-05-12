@@ -8,18 +8,12 @@ MunitResult test_put(const MunitParameter params[], void* fixture) {
     hashmap_put(my_hashmap, "anotherKey", 6);
 
     munit_assert_int(hashmap_get(my_hashmap, "akey"), ==, 3);
+
+    return MUNIT_OK;
 }
 
-void* test_setup(const MunitParameter parmas[], void* user_data) {
-    hashmap_t* new_hashmap = malloc(sizeof(hashmap_t));
-
-    size_t array_size = 32;
-    new_hashmap->array = malloc(array_size * sizeof(int*));
-    for (int i=0; i < array_size; i++) {
-        new_hashmap->array[i] = NULL;
-    }
-    new_hashmap->current_size = 0;
-    new_hashmap->max_size = array_size;
+void* test_setup(const MunitParameter params[], void* user_data) {
+    hashmap_t* new_hashmap = create_hashmap_t();
 
     return new_hashmap;
 }
@@ -30,10 +24,10 @@ void test_tear_down(void* fixture) {
 
 MunitTest tests[] = {
     {
-        "/a_test",
+        "/test_put",
         test_put,
-        NULL, /* setup fn */
-        NULL, /* teardown fn */
+        test_setup, /* setup fn */
+        test_tear_down, /* teardown fn */
         MUNIT_TEST_OPTION_NONE,
         NULL /* params */
     },

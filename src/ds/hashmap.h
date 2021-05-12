@@ -15,7 +15,7 @@ typedef struct {
     size_t max_size;
 } hashmap_t;
 
-hashmap_t* create_hashmap();
+hashmap_t* create_hashmap_t();
 
 int hashmap_get(hashmap_t*, char[]);
 void hashmap_put(hashmap_t*, char[], int);

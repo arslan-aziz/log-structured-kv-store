@@ -65,11 +65,12 @@ void hashmap_put(hashmap_t* hm, char key[], int value) {
         return;
     }
 
-    while (head != NULL && strcmp(head->key, key) != 0) {
+    while (head->next != NULL && strcmp(head->key, key) != 0) {
         head = head->next;
     }
 
-    if (head != NULL) {
+    // recheck if key present in case last node reached
+    if (strcmp(head->key, key) == 0) {
         head->value = value;
     }
     else {
@@ -89,7 +90,7 @@ hashmap_t* create_hashmap_t() {
 
     // init LL node in each pos of array
     size_t array_size = 32;
-    new_hashmap->array = malloc(array_size * sizeof(int));
+    new_hashmap->array = malloc(array_size * sizeof(ll_node_t*));
     for (int i=0; i < array_size; i++) {
         new_hashmap->array[i] = NULL;
     }

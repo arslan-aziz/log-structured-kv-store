@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "ds/hashmap.h"
 
 int main(int argc, char *argv[]) {
