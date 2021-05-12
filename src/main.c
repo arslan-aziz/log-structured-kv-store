@@ -25,7 +25,8 @@ int main(int argc, char *argv[]) {
     }
 
     // set up data file
-    int data_fd = create_data_file(filepath_ptr);
+    // int data_fd = create_data_file(filepath_ptr);
+    int data_fd = -1;
     if (data_fd == -1) {
         perror("Error on create data file");
         return -1;
